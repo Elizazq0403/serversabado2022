@@ -2,6 +2,9 @@
 //const express = require('express') //verseion vieja de umportar
 import express from 'express'
 
+//Importo las rutas del API
+import {rutas} from '../routes/rutas.js'
+
 export class Servidor{
 
 
@@ -17,29 +20,8 @@ export class Servidor{
     }
 
     atenderPeticiones(){
-
-        //SERVICIOS DE MI API
-        this.app.get('/api/v1/sabado', function (req, res) {
-            res.send('Hola soy un GET')
-        })
-
-        this.app.get('/api/v1/sabado/:id', function (req, res) {
-            res.send('Hola soy un GET')
-        })
-
-        this.app.post('/api/v1/sabado', function (req, res) {
-            res.send('Hola soy un POST')
-        })
-
-        this.app.put('/api/v1/sabado', function (req, res) {
-            res.send('Hola soy un PUT')
-        })
-
-        this.app.delete('/api/v1/sabado', function (req, res) {
-            res.send('Hola soy un DELETE')
-        })
-
-       
+       //Llamando al archivo de rutas
+       this.app.use('/',rutas)
     }
 
 }
