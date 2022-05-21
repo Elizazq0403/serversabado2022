@@ -3,17 +3,22 @@
 //2. Ejecutar logica de negocio
 //3. LLamar a la capa de SERVICIOS
 //4. Enviar las respuestas al cliente
+
+//Importo els ervicio
+import {ServicioHabitacion} from '../services/ServicioHabitacion.js'
+
 export class ControladorHabitacion{
 
     constructor(){}
 
-    buscarTodas(request,response){
+    async buscarTodas(request,response){
 
-        let datos=[{nombre:"Juan",edad:32},{nombre:"Sara",edad:31}] //borrar despues
+        let servicioHabitacion= new ServicioHabitacion()
+       
         try{ //Todo SALE BIEN
             response.status(200).json({
                 mensaje:"Exito buscando los datos",
-                data:datos,
+                data:await servicioHabitacion.buscarTodas(),
                 estado:true
             })
 
@@ -26,15 +31,16 @@ export class ControladorHabitacion{
         }
     }
 
-    buscarPorId(request,response){
+    async buscarPorId(request,response){
 
-        let datos=[{nombre:"Juan",edad:32}] //borrar despues
+        let servicioHabitacion= new ServicioHabitacion()
+       
         let id=request.params.id
         console.log(id)
         try{ //Todo SALE BIEN
             response.status(200).json({
                 mensaje:"Exito buscando los datos "+id,
-                data:datos,
+                data:await servicioHabitacion.buscarPorId(id),
                 estado:true
             })
 
@@ -48,14 +54,17 @@ export class ControladorHabitacion{
 
     }
 
-    registrar(request,response){
+    async registrar(request,response){
+
+        let servicioHabitacion= new ServicioHabitacion()
 
         let datosPeticion=request.body
         try{
 
+            await servicioHabitacion.registrar(datosPeticion)
             response.status(200).json({
                 mensaje:"Exito agregando la habitacion",
-                data:datosPeticion,
+                data:null,
                 estado:true
             })
 
@@ -72,14 +81,15 @@ export class ControladorHabitacion{
 
     }
 
-    editar(request,response){
+    async editar(request,response){
+        let servicioHabitacion= new ServicioHabitacion()
         let id=request.params.id
         let datosPeticion=request.body
         try{
-
+            await servicioHabitacion.editar(id,datosPeticion)
             response.status(200).json({
                 mensaje:"Exito editando la habitacion",
-                data:datosPeticion,
+                data:null,
                 estado:true
             })
 
@@ -96,12 +106,13 @@ export class ControladorHabitacion{
     }
 
     elimnar(request,response){
+        let servicioHabitacion= new ServicioHabitacion()
         let id=request.params.id
         try{
-
+            await servicioHabitacion.eliminar(id)
             response.status(200).json({
                 mensaje:"Exito eliminando la habitacion",
-                data:[],
+                data:null,
                 estado:true
             })
 
