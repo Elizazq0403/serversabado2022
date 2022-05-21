@@ -105,7 +105,7 @@ export class ControladorHabitacion{
         }
     }
 
-    elimnar(request,response){
+    async elimnar(request,response){
         let servicioHabitacion= new ServicioHabitacion()
         let id=request.params.id
         try{
