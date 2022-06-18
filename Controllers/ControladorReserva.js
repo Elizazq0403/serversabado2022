@@ -5,8 +5,8 @@ import {ServicioReserva} from '../services/ServicioReserva.js'
 
 export class ControladorReserva{
     
-    constructor(request,response){}
-
+    constructor(){} //constructor(request,response)
+  
     async buscarPorId(request,response){
 
         let servicioReserva= new ServicioReserva()
