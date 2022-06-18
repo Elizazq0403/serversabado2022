@@ -4,7 +4,7 @@
 //3. LLamar a la capa de SERVICIOS
 //4. Enviar las respuestas al cliente
 
-//Importo els ervicio
+//Importo el ervicio
 import {ServicioHabitacion} from '../services/ServicioHabitacion.js'
 
 export class ControladorHabitacion{
